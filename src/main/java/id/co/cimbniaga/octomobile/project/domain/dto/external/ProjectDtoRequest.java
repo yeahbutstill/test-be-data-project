@@ -16,6 +16,6 @@ public class ProjectDtoRequest {
     private Long id;
     private String projectCode;
     private String projectDescription;
-    private long mandays;
+    private Long mandays;
     private Employee leadEmployee;
 }

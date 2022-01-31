@@ -25,7 +25,7 @@ public class EmployeeController {
         TimeUnit.SECONDS.sleep(3);
         try {
             return employeeService.listEmployee();
-            
+
         } catch (Exception e) {
             log.error("Happened error when findAll employee : {}", e.getClass().getName(), e.getStackTrace());
             log.trace("{}", e);

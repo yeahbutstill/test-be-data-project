@@ -20,15 +20,23 @@ public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NonNull @NotEmpty private long id;
+    @NonNull
+    @NotEmpty
+    private Long id;
 
     @Column(length = 20)
-    @NonNull @NotEmpty private String projectCode;
+    @NonNull
+    @NotEmpty
+    private String projectCode;
 
-    @NonNull @NotEmpty private String projectDescription;
+    @NonNull
+    @NotEmpty
+    private String projectDescription;
 
     @Column(length = 10)
-    @NonNull @NotEmpty private long mandays;
+    @NonNull
+    @NotEmpty
+    private Long mandays;
 
     @ManyToMany(mappedBy = "memberProject")
     private List<Employee> memberEmployee = new ArrayList<>();

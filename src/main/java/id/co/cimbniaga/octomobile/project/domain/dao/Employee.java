@@ -20,21 +20,35 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NonNull @NotEmpty private long id;
+    @NonNull
+    @NotEmpty
+    private Long id;
 
     @Column(length = 20)
-    @NonNull @NotEmpty private String nik;
-    @NonNull @NotEmpty private String firstName;
-    @NonNull @NotEmpty private String lastName;
+    @NonNull
+    @NotEmpty
+    private String nik;
+    @NonNull
+    @NotEmpty
+    private String firstName;
+    @NonNull
+    @NotEmpty
+    private String lastName;
 
     @Column(length = 15)
-    @NonNull @NotEmpty private String gender;
+    @NonNull
+    @NotEmpty
+    private String gender;
 
     @Column(length = 15)
-    @NonNull @NotEmpty private long salary;
+    @NonNull
+    @NotEmpty
+    private Long salary;
 
     @Column(length = 30)
-    @NonNull @NotEmpty private String title;
+    @NonNull
+    @NotEmpty
+    private String title;
 
     @ManyToMany()
     @JoinTable(name = "member_project",
