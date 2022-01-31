@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd"
+          xmlns="http://maven.apache.org/SETTINGS/1.1.0">
+    <mirrors>
+        <mirror>
+            <mirrorOf>*</mirrorOf>
+            <name>omo-mirror</name>
+            <url>https://artifactory.cimbniaga.co.id/artifactory/omo-mirror</url>
+            <id>omo-mirror</id>
+        </mirror>
+    </mirrors>
+    <pluginGroups>
+        <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+    </pluginGroups>
+    <profiles>
+        <profile>
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>central</id>
+                    <name>omo-release</name>
+                    <url>https://artifactory.cimbniaga.co.id/artifactory/omo-release</url>
+                </repository>
+                <repository>
+                    <snapshots/>
+                    <id>snapshots</id>
+                    <name>omo-snapshot</name>
+                    <url>https://artifactory.cimbniaga.co.id/artifactory/omo-snapshot</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>central</id>
+                    <name>omo-release</name>
+                    <url>https://artifactory.cimbniaga.co.id/artifactory/omo-release</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <snapshots/>
+                    <id>snapshots</id>
+                    <name>omo-snapshot</name>
+                    <url>https://artifactory.cimbniaga.co.id/artifactory/omo-snapshot</url>
+                </pluginRepository>
+            </pluginRepositories>
+            <id>artifactory</id>
+        </profile>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- Optional URL to server. Default value is http://sonarqube-cimb-sonarq.app.mylab.local -->
+                <sonar.host.url>http://sonarqube-cimb-sonarq.app.mylab.local</sonar.host.url>
+                <sonar.coverage.exclusions>
+                    **/config/*.java, **/config/**/*.java, **/config/**/**/*.java, **/config/**/**/**/*.java,
+                    **/domain/*.java, **/domain/**/*.java, **/domain/**/**/*.java, **/domain/**/**/**/*.java,
+                    **/constant/*.java, **/constant/**/*.java, **/constant/**/**/*.java, **/constant/**/**/**/*.java,
+                    **/exception/*.java, **/exception/**/*.java,
+                    **/cimbniaga/octomobile/Application.java
+                </sonar.coverage.exclusions>
+                <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+                <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+                <sonar.language>java</sonar.language>
+                <sonar.java.libraries>${user.home}/.m2/repository</sonar.java.libraries>
+                <sonar.sources>src/main/java</sonar.sources>
+                <sonar.java.source>11</sonar.java.source>
+                <sonar.binaries>target/classes</sonar.binaries>
+            </properties>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>artifactory</activeProfile>
+    </activeProfiles>
+</settings>
