@@ -1,7 +1,6 @@
 package id.co.cimbniaga.octomobile.controller;
 
 import id.co.cimbniaga.octomobile.project.constant.ConstantMess;
-import id.co.cimbniaga.octomobile.project.controller.EmployeeController;
 import id.co.cimbniaga.octomobile.project.domain.dao.Employee;
 import id.co.cimbniaga.octomobile.project.domain.dto.common.BaseResponse;
 import id.co.cimbniaga.octomobile.project.service.EmployeeService;
@@ -13,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -34,10 +33,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Slf4j
-@WebMvcTest(value = EmployeeController.class)
+@SpringBootTest
 @RunWith(SpringRunner.class)
 public class EmployeeControllerTest {
-    @Autowired
+
     private MockMvc mockMvc;
 
     @Autowired
@@ -56,12 +55,12 @@ public class EmployeeControllerTest {
 
     public Employee getEmployee() {
         return Employee.builder()
-                .id(1l)
+                .id(1L)
                 .firstName("Dede")
                 .lastName("Hamzah")
                 .nik("AB1234")
                 .gender("laki-laki")
-                .salary(1000000l)
+                .salary(1000000L)
                 .title("Programmer")
                 .build();
     }
@@ -141,7 +140,7 @@ public class EmployeeControllerTest {
     @Test
     public void deleteEmployee_expectSuccess() throws Exception {
         Mockito.when(employeeService.deleteEmployee(any()))
-                .thenReturn(ResponseEntity.ok().body(BaseResponse.builder().message(ConstantMess.KEY_SUCCESS_DELETE).data(1l).build()));
+                .thenReturn(ResponseEntity.ok().body(BaseResponse.builder().message(ConstantMess.KEY_SUCCESS_DELETE).data(1L).build()));
 
         mockMvc.perform(post("/employee/delete")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -153,7 +152,7 @@ public class EmployeeControllerTest {
     @Test
     public void deleteEmployee_expectError() throws Exception {
         Mockito.when(employeeService.deleteEmployee(any()))
-                .thenReturn(ResponseEntity.status(HttpStatus.NOT_FOUND).body(BaseResponse.builder().message(ConstantMess.KEY_DATA_NOT_FOUND).data(1l).build()));
+                .thenReturn(ResponseEntity.status(HttpStatus.NOT_FOUND).body(BaseResponse.builder().message(ConstantMess.KEY_DATA_NOT_FOUND).data(1L).build()));
 
         mockMvc.perform(post("/employee/delete")
                         .contentType(MediaType.APPLICATION_JSON)

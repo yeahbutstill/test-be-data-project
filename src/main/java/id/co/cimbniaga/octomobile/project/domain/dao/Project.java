@@ -1,17 +1,18 @@
 package id.co.cimbniaga.octomobile.project.domain.dao;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,6 +40,7 @@ public class Project {
     private Long mandays;
 
     @ManyToMany(mappedBy = "memberProject")
+    @ToString.Exclude
     private List<Employee> memberEmployee = new ArrayList<>();
 
     @OneToOne()
@@ -47,4 +49,16 @@ public class Project {
             inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"))
     private Employee leadEmployee;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Project project = (Project) o;
+        return id != null && Objects.equals(id, project.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

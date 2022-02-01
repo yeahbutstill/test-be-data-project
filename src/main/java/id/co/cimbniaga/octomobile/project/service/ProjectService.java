@@ -4,6 +4,7 @@ import id.co.cimbniaga.octomobile.project.domain.dto.external.ProjectDtoRequest;
 import org.springframework.http.ResponseEntity;
 
 public interface ProjectService {
+
     ResponseEntity<Object> getProject(String request);
 
     ResponseEntity<Object> insertProject(ProjectDtoRequest request);
@@ -13,4 +14,5 @@ public interface ProjectService {
     ResponseEntity<Object> deleteProject(Long request);
 
     ResponseEntity<Object> listProject();
+
 }

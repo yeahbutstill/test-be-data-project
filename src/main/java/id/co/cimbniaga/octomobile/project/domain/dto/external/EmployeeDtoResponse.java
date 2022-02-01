@@ -17,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EmployeeDtoResponse {
+
     private Long id;
     private String nik;
     private String firstName;
@@ -60,4 +61,5 @@ public class EmployeeDtoResponse {
             }
         }
     }
+
 }

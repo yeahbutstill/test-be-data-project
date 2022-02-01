@@ -6,8 +6,8 @@ import id.co.cimbniaga.octomobile.project.repository.EmployeeRepository;
 import id.co.cimbniaga.octomobile.project.service.implementation.EmployeeServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Rule;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -25,7 +25,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 @Slf4j
 @SpringBootTest
-class EmployeeServiceTest {
+public class EmployeeServiceTest {
 
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
@@ -51,7 +51,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void getListEmployee_expectSuccess() {
+    public void getListEmployee_expectSuccess() {
         List<Employee> employeesList = List.of(getEmployee());
         Mockito.when(employeeRepository.findAll()).thenReturn(employeesList);
         ResponseEntity<Object> responseEntity = employeeService.listEmployee();
@@ -59,14 +59,14 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void getEmployee_expectSuccess() {
+    public void getEmployee_expectSuccess() {
         Mockito.when(employeeRepository.findByNik(any())).thenReturn(getEmployee());
         ResponseEntity<Object> response = employeeService.getEmployee(any());
         Assertions.assertEquals(200, response.getStatusCodeValue());
     }
 
     @Test
-    void insertEmployee_expectSuccess() {
+    public void insertEmployee_expectSuccess() {
         ResponseEntity<Object> response = employeeService.insertEmployee(
                 EmployeeDtoRequest.builder()
                         .firstName("Dede")
@@ -81,7 +81,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void updateEmployee_expectSuccess() {
+    public void updateEmployee_expectSuccess() {
         ResponseEntity<Object> response = employeeService.updateEmployee(
                 EmployeeDtoRequest.builder()
                         .id(1L)
@@ -97,7 +97,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void deleteEmployee_expectSuccess() {
+    public void deleteEmployee_expectSuccess() {
         Mockito.when(employeeRepository.findById(any())).thenReturn(Optional.of(getEmployee()));
         ResponseEntity<Object> response = employeeService.deleteEmployee(getEmployee().getId());
         Assertions.assertEquals(200, response.getStatusCodeValue());
@@ -105,21 +105,21 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void deleteEmployee_expectError() {
+    public void deleteEmployee_expectError() {
         Mockito.when(employeeRepository.findById(any())).thenReturn(Optional.empty());
         ResponseEntity<Object> response = employeeService.deleteEmployee(getEmployee().getId());
         Assertions.assertEquals(404, response.getStatusCodeValue());
     }
 
     @Test
-    void getListEmployee_expectError() {
+    public void getListEmployee_expectError() {
         Mockito.when(employeeRepository.findAll()).thenReturn(new ArrayList<>());
         ResponseEntity<Object> response = employeeService.listEmployee();
         Assertions.assertEquals(404, response.getStatusCodeValue());
     }
 
     @Test
-    void updateEmployee_expectError() {
+    public void updateEmployee_expectError() {
         ResponseEntity<Object> response = employeeService.updateEmployee(EmployeeDtoRequest.builder()
                 .firstName("Dede")
                 .lastName("Hamzah")
@@ -132,7 +132,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void insertEmployee_expectError() {
+    public void insertEmployee_expectError() {
         ResponseEntity<Object> response = employeeService.insertEmployee(EmployeeDtoRequest.builder()
                 .id(1L)
                 .firstName("Dede")
@@ -146,7 +146,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void getEmployee_expectError() {
+    public void getEmployee_expectError() {
         Mockito.when(employeeRepository.findByNik(any())).thenReturn(null);
         ResponseEntity<Object> response = employeeService.getEmployee(any());
         Assertions.assertEquals(404, response.getStatusCodeValue());

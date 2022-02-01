@@ -16,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EmployeeDtoRequest {
+
     private Long id;
     private String nik;
     private String firstName;
@@ -24,4 +25,5 @@ public class EmployeeDtoRequest {
     private Long salary;
     private String title;
     private List<Project> memberProject = new ArrayList<>();
+
 }

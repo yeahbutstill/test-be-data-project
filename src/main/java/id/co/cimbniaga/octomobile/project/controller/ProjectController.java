@@ -2,6 +2,7 @@ package id.co.cimbniaga.octomobile.project.controller;
 
 import id.co.cimbniaga.octomobile.project.domain.dto.external.ProjectDtoRequest;
 import id.co.cimbniaga.octomobile.project.service.ProjectService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,9 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@RestController
 @Slf4j
+@RestController
+@EnableWebMvc
+@RequiredArgsConstructor
 @RequestMapping("/project")
 public class ProjectController {
 

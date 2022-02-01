@@ -1,7 +1,6 @@
 package id.co.cimbniaga.octomobile.controller;
 
 import id.co.cimbniaga.octomobile.project.constant.ConstantMess;
-import id.co.cimbniaga.octomobile.project.controller.ProjectController;
 import id.co.cimbniaga.octomobile.project.domain.dao.Project;
 import id.co.cimbniaga.octomobile.project.domain.dto.common.BaseResponse;
 import id.co.cimbniaga.octomobile.project.service.ProjectService;
@@ -13,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -34,10 +33,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Slf4j
-@WebMvcTest(value = ProjectController.class)
+@SpringBootTest
 @RunWith(SpringRunner.class)
 public class ProjectControllerTest {
-    @Autowired
+
     private MockMvc mockMvc;
 
     @Autowired
@@ -59,7 +58,7 @@ public class ProjectControllerTest {
                 .id(1L)
                 .projectCode("Code01")
                 .projectDescription("Project Transaction")
-                .mandays(10l)
+                .mandays(10L)
                 .build();
     }
 
@@ -163,7 +162,7 @@ public class ProjectControllerTest {
     @Test
     public void deleteProject_expectSuccess() throws Exception {
         Mockito.when(projectService.deleteProject(any()))
-                .thenReturn(ResponseEntity.ok().body(BaseResponse.builder().message(ConstantMess.KEY_SUCCESS_DELETE).data(1l).build()));
+                .thenReturn(ResponseEntity.ok().body(BaseResponse.builder().message(ConstantMess.KEY_SUCCESS_DELETE).data(1L).build()));
 
         mockMvc.perform(post("/project/delete")
                         .contentType(MediaType.APPLICATION_JSON)

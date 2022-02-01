@@ -13,9 +13,11 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProjectDtoRequest {
+
     private Long id;
     private String projectCode;
     private String projectDescription;
     private Long mandays;
     private Employee leadEmployee;
+
 }

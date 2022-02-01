@@ -17,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProjectDtoResponse {
+
     private Long id;
     private String projectCode;
     private String projectDescription;
@@ -57,4 +58,5 @@ public class ProjectDtoResponse {
             leadEmployee.setTitle(employee.getTitle());
         }
     }
+
 }
