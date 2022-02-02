@@ -4,7 +4,6 @@ import id.co.cimbniaga.octomobile.project.domain.dto.external.ProjectDtoRequest;
 import id.co.cimbniaga.octomobile.project.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,16 +18,16 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @RequestMapping("/project")
 public class ProjectController {
 
-    @Autowired
-    ProjectService projectService;
+
+    private final ProjectService projectService;
 
     @PostMapping(value = "/")
     public ResponseEntity<Object> findAllProject() {
         try {
             return projectService.listProject();
         } catch (Exception e) {
-            log.error("Happened error when findAll project : {}", e.getClass().getName(), e.getStackTrace());
-            log.trace("{}", e);
+            log.error("Happened error when findAll project : {} {}", e.getClass().getName(), e.getStackTrace());
+            log.trace("{}", String.valueOf(e));
             throw e;
         }
     }
@@ -38,8 +37,8 @@ public class ProjectController {
         try {
             return projectService.getProject(request.getProjectCode());
         } catch (Exception e) {
-            log.error("Happened error when get project with projectCode: {}", e.getClass().getName(), e.getStackTrace());
-            log.trace("{}", e);
+            log.error("Happened error when get project with projectCode: {} {}", e.getClass().getName(), e.getStackTrace());
+            log.trace("{}", String.valueOf(e));
             throw e;
         }
     }
@@ -49,8 +48,8 @@ public class ProjectController {
         try {
             return projectService.insertProject(request);
         } catch (Exception e) {
-            log.error("Happened error when insert employee : {}", e.getClass().getName(), e.getStackTrace());
-            log.trace("{}", e);
+            log.error("Happened error when insert employee : {} {}", e.getClass().getName(), e.getStackTrace());
+            log.trace("{}", String.valueOf(e));
             throw e;
         }
     }
@@ -60,8 +59,8 @@ public class ProjectController {
         try {
             return projectService.deleteProject(request.getId());
         } catch (Exception e) {
-            log.error("Happened error when delete project : {}", e.getClass().getName(), e.getStackTrace());
-            log.trace("{}", e);
+            log.error("Happened error when delete project : {} {}", e.getClass().getName(), e.getStackTrace());
+            log.trace("{}", String.valueOf(e));
             throw e;
         }
     }
@@ -71,8 +70,8 @@ public class ProjectController {
         try {
             return projectService.updateProject(request);
         } catch (Exception e) {
-            log.error("Happened error when update project : {}", e.getClass().getName(), e.getStackTrace());
-            log.trace("{}", e);
+            log.error("Happened error when update project : {} {}", e.getClass().getName(), e.getStackTrace());
+            log.trace("{}", String.valueOf(e));
             throw e;
         }
     }
