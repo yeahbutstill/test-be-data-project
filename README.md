@@ -13,11 +13,11 @@ This repository will handle all service (CRUD) request to Project Management dat
 
 ### Scope Requirements
 
-|Task|Detail|
-|------------------|------------------|
-|Epic|![plot](./doc/slide_1.jpg)|
-|Class Diagram|![plot](./doc/slide_2.jpg)|
-|Entity Relationship Diagram|![plot](./doc/slide_3.jpg)|
+| Task                        | Detail                     |
+|-----------------------------|----------------------------|
+| Epic                        | ![plot](./doc/slide_1.jpg) |
+| Class Diagram               | ![plot](./doc/slide_2.jpg) |
+| Entity Relationship Diagram | ![plot](./doc/slide_3.jpg) |
 
 ## Features
 
@@ -33,19 +33,19 @@ This repository will handle all service (CRUD) request to Project Management dat
 
 Acceptable pattern for endpoint are below :
 
-| Pattern  | Example |Description|
-|-----------|-------------|-------------|
-|/`${version_controller}`/`${object}`/`${operation}` | /v1/cat/create | save/create object cat |
+| Pattern                                             | Example        | Description            |
+|-----------------------------------------------------|----------------|------------------------|
+| /`${version_controller}`/`${object}`/`${operation}` | /v1/cat/create | save/create object cat |
 
 Below are example endpoint convention standard for operation CRUD described by example object `cat`:
 
-| Endpoint  | Operation |Result|
-|-----------|-------------|-------------|
-|/v1/cat/|get all cat |List of object cat|
-|/v1/cat/create|insert cat  |Status of create object cat|
-|/v1/cat/update|update cat |Status of update object cat|
-|/v1/cat/delete|delete cat |Status of delete object cat|
-|/v1/cat/detail|get detail cat| Detail of object cat|
+| Endpoint       | Operation      | Result                      |
+|----------------|----------------|-----------------------------|
+| /v1/cat/       | get all cat    | List of object cat          |
+| /v1/cat/create | insert cat     | Status of create object cat |
+| /v1/cat/update | update cat     | Status of update object cat |
+| /v1/cat/delete | delete cat     | Status of delete object cat |
+| /v1/cat/detail | get detail cat | Detail of object cat        |
 
 ## Important Rules For Developer
 
@@ -54,28 +54,9 @@ Below are example endpoint convention standard for operation CRUD described by e
 - Choose the latest / stable version if add a new library
 - In this repository, attached `settings.xml` that should be use when running build/run/deploy application.
 - parent pom should be using octomobile parent pom
-   ```
-   <project xmlns="http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd\">
- 
-    <!--The identifier of the parent POM-->
-    <parent>
-        <groupId>id.co.cimbniaga.octomobile</groupId>
-        <artifactId>main-be-module-parent</artifactId>
-        <version>1.2.0-RELEASE</version>
-    </parent>
- 
-    <groupId>id.co.cimbniaga.octomobile<groupId>
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>test-be-data-project</artifactId>
-    <name>Back End for Project Management Service</name>
- 
-    <dependencies>        
-        .....
-    </dependencies>
- 
-     ....
-   </project>
-   ```
+  ```
+  https://
+  ```
 
 ## Project Structure Description
 
