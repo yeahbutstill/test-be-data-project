@@ -1,7 +1,7 @@
 package id.co.cimbniaga.octomobile.project.controller;
 
 import id.co.cimbniaga.octomobile.project.domain.dto.external.ProjectDtoRequest;
-import id.co.cimbniaga.octomobile.project.service.ProjectService;
+import id.co.cimbniaga.octomobile.project.service.implementation.ProjectServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @RequestMapping("/project")
 public class ProjectController {
 
-    private final ProjectService projectService;
+    private final ProjectServiceImpl projectService;
 
     @PostMapping(value = "/")
     public ResponseEntity<Object> findAllProject() {

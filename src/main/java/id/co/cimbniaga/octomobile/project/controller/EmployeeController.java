@@ -1,7 +1,7 @@
 package id.co.cimbniaga.octomobile.project.controller;
 
 import id.co.cimbniaga.octomobile.project.domain.dto.external.EmployeeDtoRequest;
-import id.co.cimbniaga.octomobile.project.service.EmployeeService;
+import id.co.cimbniaga.octomobile.project.service.implementation.EmployeeServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/employee")
 public class EmployeeController {
 
-    private final EmployeeService employeeService;
+    private final EmployeeServiceImpl employeeService;
 
     @PostMapping(value = "/")
     public ResponseEntity<Object> findAllEmployee() {
