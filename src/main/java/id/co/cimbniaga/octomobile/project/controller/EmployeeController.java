@@ -23,14 +23,18 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @PostMapping(value = "/")
-    public ResponseEntity<Object> findAllEmployee() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(3);
+    public ResponseEntity<Object> findAllEmployee() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         try {
             return employeeService.listEmployee();
 
         } catch (Exception e) {
-            log.error("Happened error when findAll employee : {}", e.getClass().getName(), e.getStackTrace());
-            log.trace("{}", e);
+            log.error("Happened error when findAll employee : {} {}", e.getClass().getName(), e.getStackTrace());
+            log.trace("{}", String.valueOf(e));
             throw e;
         }
     }
@@ -40,8 +44,8 @@ public class EmployeeController {
         try {
             return employeeService.insertEmployee(request);
         } catch (Exception e) {
-            log.error("Happened error when insert employee : {}", e.getClass().getName(), e.getStackTrace());
-            log.trace("{}", e);
+            log.error("Happened error when insert employee : {} {}", e.getClass().getName(), e.getStackTrace());
+            log.trace("{}", String.valueOf(e));
             throw e;
         }
     }
@@ -51,8 +55,8 @@ public class EmployeeController {
         try {
             return employeeService.updateEmployee(request);
         } catch (Exception e) {
-            log.error("Happened error when update employee : {}", e.getClass().getName(), e.getStackTrace());
-            log.trace("{}", e);
+            log.error("Happened error when update employee : {} {}", e.getClass().getName(), e.getStackTrace());
+            log.trace("{}", String.valueOf(e));
             throw e;
         }
     }
@@ -62,8 +66,8 @@ public class EmployeeController {
         try {
             return employeeService.deleteEmployee(request.getId());
         } catch (Exception e) {
-            log.error("Happened error when delete employee : {}", e.getClass().getName(), e.getStackTrace());
-            log.trace("{}", e);
+            log.error("Happened error when delete employee : {} {}", e.getClass().getName(), e.getStackTrace());
+            log.trace("{}", String.valueOf(e));
             throw e;
         }
     }
@@ -73,8 +77,8 @@ public class EmployeeController {
         try {
             return employeeService.getEmployee(request.getNik());
         } catch (Exception e) {
-            log.error("Happened error when get employee with NIK: {}", e.getClass().getName(), e.getStackTrace());
-            log.trace("{}", e);
+            log.error("Happened error when get employee with NIK: {} {}", e.getClass().getName(), e.getStackTrace());
+            log.trace("{}", String.valueOf(e));
             throw e;
         }
     }
