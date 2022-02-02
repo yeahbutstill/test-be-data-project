@@ -18,7 +18,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @RequestMapping("/project")
 public class ProjectController {
 
-
     private final ProjectService projectService;
 
     @PostMapping(value = "/")
